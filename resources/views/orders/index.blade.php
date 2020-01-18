@@ -115,7 +115,7 @@
           <tbody>
             @foreach($orders as $order)
               <tr>
-                <td>{{ $order->idboleto }}</td>
+                <td>{{ $order->idBoleto }}</td>
                 <td>{{ $order->cdCliente }}</td>
                 <td>{{ $order->cdProduto }}</td>
                 <td>{{ $order->cdTipoCliente }}</td>
@@ -125,7 +125,7 @@
                 <td>{{ config('statuses.' . $order->dsStatus) }}</td>
                 <td>{{ $order->dtVenda->format('H:i:s d/m/Y') }}</td>
                 <td>
-                  <a href="{{ route('orders.edit', $order->idboleto) }}" class="btn btn-primary">
+                  <a href="{{ route('orders.edit', $order->idBoleto) }}" class="btn btn-primary">
                     <i class="fa fa-search"></i>
                     Detalhes
                   </a>

@@ -2,7 +2,7 @@
 @section('content')
 <div class="container-fluid">
   <!-- Page Heading -->
-  <h1 class="h3 mb-2 text-gray-800">Pedido #{{ $order->idboleto }}</h1>
+  <h1 class="h3 mb-2 text-gray-800">Pedido #{{ $order->idBoleto }}</h1>
   <div class="card shadow mb-4">
     <div class="card-body">
       <table class="table table-borderless">
@@ -250,7 +250,7 @@
                 @endforeach
             </select>
           </div>       
-            <a href="{{ $order->idboleto .'/pendentes' }}" value="1" name="enviado" style="margin-left:40%;" class="text-center btn btn-success">Enviado</a>           
+            <a href="{{ $order->idBoleto .'/pendentes' }}" value="1" name="enviado" style="margin-left:40%;" class="text-center btn btn-success">Enviado</a>           
             <button class="btn btn-primary float-right">Alterar Status</button>
         </form>
     </div>

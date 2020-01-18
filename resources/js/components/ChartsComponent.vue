@@ -1,8 +1,7 @@
 <template>
 <div class="container-fluid">
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+        <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>      
     </div>
     <div class="row">
       <div class="col-xl-4 col-md-6 mb-4">
@@ -70,19 +69,26 @@
               <th>Valor da Taxa</th>
               <th>Status</th>
               <th>Data</th>
+              <th>Ações</th>
             </tr>
           </thead>
           <tbody>
               <tr v-for="order in orders.orders" v-bind:key="order.id">
-                <td>{{ order.idboleto }}</td>
+                <td>{{ order.idBoleto }}</td>
                 <td>{{ order.cdCliente }}</td>                
-                <td>-</td>                
-                <td>-</td>                
-                <td>{{ order.valorMe }}</td>                
-                <td>{{ order.valorMn }}</td>                
-                <td>{{ order.valorTaxa }}</td>                
-                <td>{{ order.dsStatus }}</td>                
-                <td>{{ order.dtVenda }}</td>                
+                <td>{{ order.cdCliente }}</td>                
+                <td>{{ order.cdProduto }}</td>                
+                <td>R$ {{ formatPrice(order.valorMe) }}</td>                
+                <td>R$ {{ formatPrice(order.valorMn) }}</td>                
+                <td>R$ {{ formatPrice(order.valorTaxa) }}</td>                
+                <td>{{ order.idStatus }}</td>                
+                <td>{{ order.dtVenda }}</td>    
+                <td>
+                  <a :href="`orders/${order.idBoleto}`" class="btn btn-primary">
+                    <i class="fa fa-search"></i>
+                    Detalhes
+                  </a>
+                </td>  
               </tr>
              
           </tbody>
@@ -116,9 +122,10 @@
               this.orders = response.data;    
             }).bind(this);
             },
-           
+          formatPrice(value) {
+            let val = (value/1).toFixed(2).replace('.', ',')
+            return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")
+          },                     
         }
     }
-    
-    
 </script>
